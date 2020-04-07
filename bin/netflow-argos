@@ -1,0 +1,6 @@
+#!/bin/bash
+INTERFACE='enp2s0'
+vnstat -i "$INTERFACE" --oneline | awk -F ';' '{ print $6 }'
+echo "---"
+echo "$(vnstat -i "$INTERFACE" --oneline | awk -F ';' '{ printf "%s" , $5 }') | font=monospace iconName=arrow-up-double"
+echo "$(vnstat -i "$INTERFACE" --oneline | awk -F ';' '{ printf "%s", $4 }') | font=monospace iconName=arrow-down-double"

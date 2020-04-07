@@ -1,0 +1,16 @@
+#!/bin/python3
+from argparse import ArgumentParser
+from zlib import decompress as zlib_decompress
+
+parser = ArgumentParser("Decompress zlib file")
+parser.add_argument("infile", help="File to decompress")
+parser.add_argument("outfile", help="Output file")
+
+args = parser.parse_args()
+
+infile = open(args.infile, "rb")
+outfile = open(args.outfile, "wb")
+outfile.write(zlib_decompress(infile.read()))
+infile.close()
+outfile.close()
+

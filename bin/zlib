@@ -1,0 +1,16 @@
+#!/bin/python3
+from argparse import ArgumentParser
+from zlib import compress as zlib_compress
+
+parser = ArgumentParser("Compress zlib file")
+parser.add_argument("infile", help="File to compress")
+parser.add_argument("outfile", help="Output file")
+
+args = parser.parse_args()
+
+infile = open(args.infile, "rb")
+outfile = open(args.outfile, "wb")
+outfile.write(zlib_compress(infile.read()))
+infile.close()
+outfile.close()
+
