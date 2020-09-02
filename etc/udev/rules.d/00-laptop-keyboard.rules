@@ -1,0 +1,3 @@
+ATTRS{idVendor}=="0416", ATTRS{idProduct}=="0123"
+ACTION=="add", RUN+="/home/zeinok/dotfiles/keyboardctl float"
+ACTION=="remove", RUN+="/home/zeinok/dotfile/keyboardctl reattach"

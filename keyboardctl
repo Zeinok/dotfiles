@@ -1,0 +1,10 @@
+#!/bin/sh
+USERNAME="zeinok"
+SLAVE_DEV="AT Translated Set 2 keyboard"
+MASTER_DEV="Virtual core keyboard"
+export DISPLAY=":0.0"
+export HOME="/home/${USERNAME}"
+export XAUTHORITY="${HOME}/.Xauthority"
+
+[ "$1" = "float" ]    && /usr/bin/xinput float "$SLAVE_DEV"
+[ "$1" = "reattach" ] && /usr/bin/xinput reattach "$SLAVE_DEV" "$MASTER_DEV"
