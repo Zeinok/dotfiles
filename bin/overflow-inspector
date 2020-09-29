@@ -1,0 +1,23 @@
+#!/bin/sh
+maxGB=9.5
+interface=enp2s0
+
+checkOverflow() {
+	vnstat -i "${interface}" --oneline b | awk -F ';' "{ if (\$6/(1024^3) > ${maxGB} ) { err = 1 } } END { exit err }"
+}
+
+mainLoop() {
+	if ! checkOverflow
+	then	
+		notify-send -u critical "Traffic reached ${maxGB}GB, disconnecting..."
+		sleep 3
+		nmcli device disconnect "${interface}"
+	fi
+}
+
+while true
+do
+	mainLoop
+	sleep 10
+done
+

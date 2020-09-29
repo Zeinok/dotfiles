@@ -1,0 +1,3 @@
+#!/bin/sh
+vnstat -i enp2s0 --oneline | awk -F ';' '{ print "RX:", $4, "/", "TX:", $5 }'
+
