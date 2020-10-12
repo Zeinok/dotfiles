@@ -1,0 +1,2 @@
+#!/bin/sh
+curl -s "https://build.voidlinux.org/json/builders/$(xbps-uhelper arch)_builder" | jq -r .state
